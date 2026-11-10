@@ -1,1 +1,317 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adhemar Ferreira | Instagram</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#fafafa;font-family:Arial,sans-serif;color:#222}
+header{
+  background:white;padding:15px;
+  border-bottom:1px solid #ddd;
+  display:flex;justify-content:space-between;
+  align-items:center;position:sticky;top:0;z-index:5
+}
+.logo{font-size:25px;font-weight:bold;font-style:italic}
+.profile{max-width:650px;margin:auto;padding:22px 15px}
+.top{display:flex;align-items:center;gap:25px}
+.avatar{
+ width:95px;height:95px;border-radius:50%;
+ object-fit:cover;padding:3px;
+ border:3px solid #d62976
+}
+.stats{display:flex;gap:20px;text-align:center;font-size:12px}
+.stats strong{display:block;font-size:18px;margin-bottom:5px}
+h2{font-size:18px;margin-top:18px}
+.bio{font-size:14px;line-height:1.6;margin-top:8px}
+.badge{background:#eee;padding:6px 10px;border-radius:15px;
+display:inline-block;font-size:12px;margin-top:8px}
+.follow{
+ width:100%;padding:11px;border:0;border-radius:8px;
+ background:#0095f6;color:white;font-weight:bold;margin-top:15px;
+ cursor:pointer
+}
+.highlights{display:flex;gap:23px;overflow-x:auto;padding:25px 0}
+.story{text-align:center;font-size:12px;min-width:65px;cursor:pointer}
+.circle{
+ width:67px;height:67px;border-radius:50%;
+ padding:3px;border:2px solid #d62976;
+ object-fit:cover;margin-bottom:6px
+}
+.tabs{text-align:center;padding:15px;border-top:1px solid #ddd;
+font-weight:bold}
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.post{aspect-ratio:1;position:relative;cursor:pointer}
+.post img{width:100%;height:100%;object-fit:cover}
+.post:active{opacity:.8}
+.history{background:white;margin-top:30px;padding:22px;line-height:1.7}
+.history h2{font-size:23px;margin-bottom:15px}
+.history p{font-size:15px;color:#444;margin-bottom:15px}
+.history h3{margin:20px 0 8px}
+footer{text-align:center;padding:25px;color:#888;font-size:12px}
+
+/* Janela de fotos */
+.modal{
+ display:none;position:fixed;inset:0;
+ background:#000e;z-index:10;
+ justify-content:center;align-items:center;padding:20px
+}
+.modal-box{background:white;max-width:420px;width:100%;
+border-radius:12px;overflow:hidden;text-align:center}
+.modal img{width:100%;max-height:65vh;object-fit:contain;background:#111}
+.modal-info{padding:15px}
+.close{float:right;border:0;background:none;font-size:25px;cursor:pointer}
+.actions{display:flex;gap:15px;margin-top:12px}
+.actions button{border:0;background:white;font-size:23px;cursor:pointer}
+.caption{font-size:14px;margin-top:10px;text-align:left}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="logo">Instagram</div>
+ <span>♡　✉</span>
+</header>
+
+<div class="profile">
+
+ <div class="top">
+  <img class="avatar"
+  src="https://www12.senado.leg.br/noticias/materias/2023/05/11/adhemar-ferreira-da-silva-e-o-mais-novo-heroi-da-patria/adhemar_ferreira_da_silva_02.jpg"
+  alt="Adhemar Ferreira">
+
+  <div class="stats">
+   <div><strong>6</strong>publicações</div>
+   <div><strong>2</strong>ouros</div>
+   <div><strong>1952</strong>conquista</div>
+  </div>
+ </div>
+
+ <h2>Adhemar Ferreira da Silva 🇧🇷</h2>
+
+ <div class="bio">
+  🏃 Atleta brasileiro<br>
+  🥇 Bicampeão olímpico<br>
+  🇧🇷 Orgulho do Brasil<br>
+  🏆 Lenda do salto triplo
+ </div>
+
+ <span class="badge">Perfil histórico</span>
+
+ <button class="follow" id="follow" onclick="seguir()">
+ Seguir
+ </button>
+
+ <div class="highlights">
+
+  <div class="story" onclick="abrirFoto(0)">
+   <img class="circle" src="https://www12.senado.leg.br/noticias/materias/2023/05/11/adhemar-ferreira-da-silva-e-o-mais-novo-heroi-da-patria/adhemar_ferreira_da_silva_02.jpg">
+   Conquistas
+  </div>
+
+  <div class="story" onclick="abrirFoto(1)">
+   <img class="circle" src="https://primeirosnegros.com/wp-content/uploads/2017/05/adhemar-ferreira-da-silva-marca-ouro-helsinque-recorde-mundial-16m22.jpg.webp">
+   Recorde
+  </div>
+
+  <div class="story" onclick="abrirFoto(2)">
+   <img class="circle" src="https://images.sbs.com.au/drupal/yourlanguage/public/adhemar_2.jpg?imwidth=1280">
+   Atletismo
+  </div>
+
+  <div class="story" onclick="abrirFoto(3)">
+   <img class="circle" src="https://admin.cob.org.br/uploads/271_1cd7d27326.jpg">
+   Olimpíadas
+  </div>
+
+ </div>
+
+ <div class="tabs">▦ PUBLICAÇÕES</div>
+
+ <div class="posts">
+
+  <div class="post" onclick="abrirFoto(0)">
+   <img src="https://www12.senado.leg.br/noticias/materias/2023/05/11/adhemar-ferreira-da-silva-e-o-mais-novo-heroi-da-patria/adhemar_ferreira_da_silva_02.jpg">
+  </div>
+
+  <div class="post" onclick="abrirFoto(1)">
+   <img src="https://primeirosnegros.com/wp-content/uploads/2017/05/adhemar-ferreira-da-silva-marca-ouro-helsinque-recorde-mundial-16m22.jpg.webp">
+  </div>
+
+  <div class="post" onclick="abrirFoto(2)">
+   <img src="https://images.sbs.com.au/drupal/yourlanguage/public/adhemar_2.jpg?imwidth=1280">
+  </div>
+
+  <div class="post" onclick="abrirFoto(3)">
+   <img src="https://admin.cob.org.br/uploads/271_1cd7d27326.jpg">
+  </div>
+
+  <div class="post" onclick="abrirFoto(4)">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/FOTO-1-Acto-de-premiaci%C3%B3n-del-salto-triple-en-1952.jpg">
+  </div>
+
+  <div class="post" onclick="abrirFoto(5)">
+   <img src="https://static.gazetaesportiva.com/uploads/imagem/2016/11/16/00110248.jpg">
+  </div>
+
+ </div>
+
+</div>
+
+<section class="history">
+
+ <h2>📖 A história de Adhemar Ferreira</h2>
+
+ <p>
+ Adhemar Ferreira da Silva nasceu em 29 de setembro de 1927,
+ em São Paulo. Foi um dos maiores atletas da história do Brasil.
+ </p>
+
+ <h3>🏃 O começo</h3>
+
+ <p>
+ Começou no atletismo aos 18 anos e se destacou no salto triplo,
+ modalidade em que o atleta realiza três fases de salto.
+ </p>
+
+ <h3>🥇 Suas conquistas</h3>
+
+ <p>
+ Em 1952, conquistou o ouro nos Jogos Olímpicos de Helsinque.
+ Em 1956, ganhou novamente o ouro nas Olimpíadas de Melbourne.
+ Assim, tornou-se bicampeão olímpico.
+ </p>
+
+ <h3>🌟 Seu legado</h3>
+
+ <p>
+ Adhemar ajudou a colocar o Brasil em destaque no atletismo
+ mundial. Sua dedicação e suas conquistas inspiraram
+ muitas gerações de atletas.
+ </p>
+
+ <h3>🇧🇷 Nunca será esquecido!</h3>
+
+ <p>
+ Ele faleceu em 12 de janeiro de 2001, mas deixou uma
+ história muito importante para o esporte brasileiro.
+ </p>
+
+</section>
+
+<footer>
+ Perfil histórico de Adhemar Ferreira da Silva 🇧🇷
+</footer>
+
+<!-- Janela interativa -->
+
+<div class="modal" id="modal" onclick="fecharFora(event)">
+ <div class="modal-box">
+  <div class="modal-info">
+   <button class="close" onclick="fechar()">×</button>
+   <strong>Adhemar Ferreira da Silva 🇧🇷</strong>
+  </div>
+  <img id="fotoGrande" src="">
+  <div class="modal-info">
+   <div class="actions">
+    <button onclick="curtir()" id="like">♡</button>
+    <button onclick="comentar()">💬</button>
+    <button onclick="compartilhar()">↗</button>
+   </div>
+   <p id="likes">0 curtidas</p>
+   <p class="caption" id="legenda"></p>
+  </div>
+ </div>
+</div>
+
+<script>
+const fotos = [
+ "https://www12.senado.leg.br/noticias/materias/2023/05/11/adhemar-ferreira-da-silva-e-o-mais-novo-heroi-da-patria/adhemar_ferreira_da_silva_02.jpg",
+ "https://primeirosnegros.com/wp-content/uploads/2017/05/adhemar-ferreira-da-silva-marca-ouro-helsinque-recorde-mundial-16m22.jpg.webp",
+ "https://images.sbs.com.au/drupal/yourlanguage/public/adhemar_2.jpg?imwidth=1280",
+ "https://admin.cob.org.br/uploads/271_1cd7d27326.jpg",
+ "https://upload.wikimedia.org/wikipedia/commons/b/b0/FOTO-1-Acto-de-premiaci%C3%B3n-del-salto-triple-en-1952.jpg",
+ "https://static.gazetaesportiva.com/uploads/imagem/2016/11/16/00110248.jpg"
+];
+
+const legendas = [
+ "Uma grande lenda do esporte brasileiro! 🥇",
+ "O recorde de 16,22 metros em Helsinque, 1952!",
+ "Adhemar mostrando seu talento no salto triplo!",
+ "Um campeão que marcou a história do Brasil 🇧🇷",
+ "O momento da conquista olímpica!",
+ "Uma vida dedicada ao esporte!"
+];
+
+let curtidas = 0;
+let atual = 0;
+
+function abrirFoto(i){
+ atual = i;
+ document.getElementById("fotoGrande").src = fotos[i];
+ document.getElementById("legenda").innerText = legendas[i];
+ curtidas = 0;
+ atualizarCurtidas();
+ document.getElementById("like").innerText = "♡";
+ document.getElementById("modal").style.display = "flex";
+}
+
+function fechar(){
+ document.getElementById("modal").style.display = "none";
+}
+
+function fecharFora(e){
+ if(e.target.id === "modal") fechar();
+}
+
+function curtir(){
+ curtidas++;
+ atualizarCurtidas();
+ document.getElementById("like").innerText = "❤️";
+}
+
+function atualizarCurtidas(){
+ document.getElementById("likes").innerText =
+ curtidas + " curtidas";
+}
+
+function comentar(){
+ let texto = prompt("Escreva seu comentário:");
+ if(texto && texto.trim()){
+  alert("Comentário adicionado: " + texto);
+ }
+}
+
+function compartilhar(){
+ if(navigator.share){
+  navigator.share({
+   title:"Adhemar Ferreira da Silva",
+   text:legendas[atual],
+   url:location.href
+  });
+ }else{
+  alert("Compartilhamento não disponível neste navegador.");
+ }
+}
+
+function seguir(){
+ let b = document.getElementById("follow");
+ if(b.innerText === "Seguir"){
+  b.innerText = "Seguindo";
+  b.style.background = "#ddd";
+  b.style.color = "#222";
+ }else{
+  b.innerText = "Seguir";
+  b.style.background = "#0095f6";
+  b.style.color = "white";
+ }
+}
+</script>
+
+</body>
+</html>
+
